@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useAccessibility } from '../context/AccessibilityContext'
 import AccessibilityBar from './AccessibilityBar'
+import MobileNav from './MobileNav'
 
 /**
  * Layout principal de l'application
@@ -33,12 +34,17 @@ const Layout = () => {
 
       {/* En-tête avec navigation */}
       <header className="header" role="banner">
-        <h1 className="header-title">
-          <Link to="/" aria-label="AccessibleStory - Page d'accueil">
-            AccessibleStory
-          </Link>
-        </h1>
-        <nav className="nav" role="navigation" aria-label="Navigation principale">
+        <div className="header-content">
+          <h1 className="header-title">
+            <Link to="/" aria-label="AccessibleStory - Page d'accueil">
+              AccessibleStory
+            </Link>
+          </h1>
+          {/* Navigation mobile (hamburger) */}
+          <MobileNav />
+        </div>
+        {/* Navigation desktop */}
+        <nav className="nav nav-desktop" role="navigation" aria-label="Navigation principale">
           <ul className="nav-list">
             <li>
               <Link
